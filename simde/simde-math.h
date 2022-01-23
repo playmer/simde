@@ -93,7 +93,10 @@ SIMDE_DISABLE_UNWANTED_DIAGNOSTICS
   #define SIMDE_MATH_BUILTIN_LIBM(func) (0)
 #endif
 
-#if defined(HUGE_VAL)
+#ifdef _MSC_VER
+  #define SIMDE_MATH_HAVE_CMATH
+  #include <cmath>
+#elif defined(HUGE_VAL)
   /* Looks like <math.h> or <cmath> has already been included. */
 
   /* The math.h from libc++ (yes, the C header from the C++ standard
